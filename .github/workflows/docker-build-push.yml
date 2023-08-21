@@ -72,5 +72,10 @@ jobs:
     needs: 
       Docker-image
     steps:
+      - name: Download code
+        uses: actions/download-artifact@v3
+        with:
+         name: code
+         path: .
       - name: Performance-test-step
         run: ci/performance-test.sh
