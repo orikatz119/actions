@@ -60,6 +60,11 @@ jobs:
     needs: 
       Docker-image
     steps:
+      - name: Download code
+        uses: actions/download-artifact@v3
+        with:
+          name: code
+          path: .
       - name: test-script
         run: ci/component-test.sh
   Performance-test:
