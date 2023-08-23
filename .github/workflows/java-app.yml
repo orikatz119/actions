@@ -1,7 +1,6 @@
 name: java-app
 on: 
   pull_request:
-  push:
 jobs:
   my-job:
     runs-on: ubuntu-latest
@@ -11,6 +10,14 @@ jobs:
         uses: actions/checkout@v3 
       - name: step
         run: ci/build-app.sh
+      - name: test
+        run: ci/unit-test-app.sh
+      - name: Upload Repo
+        uses: actions/upload-artifact@v3
+        with:
+          name: code
+          path: .
+
 
 
     
